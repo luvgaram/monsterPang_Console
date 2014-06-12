@@ -2,7 +2,7 @@
 {
     class Monster
     {
-        public enum MonsterType { nine = 1, girl, dracula, zombie, tobi, end }
+        public enum MonsterType { goblin = 1, girl, dracula, zombie, kama, end }
         public MonsterType type;
         public double hp;
 
@@ -12,8 +12,8 @@
 
             switch (level)
             {
-                case (int)MonsterType.nine:
-                    type = MonsterType.nine;
+                case (int)MonsterType.goblin:
+                    type = MonsterType.goblin;
                     break;
                 case (int)MonsterType.girl:
                     type = MonsterType.girl;
@@ -24,8 +24,8 @@
                 case (int)MonsterType.zombie:
                     type = MonsterType.zombie;
                     break;
-                case (int)MonsterType.tobi:
-                    type = MonsterType.tobi;
+                case (int)MonsterType.kama:
+                    type = MonsterType.kama;
                     break;
                 default:
                     type = MonsterType.end;

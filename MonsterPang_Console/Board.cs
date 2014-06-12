@@ -195,7 +195,7 @@ namespace MonsterPang_Console
                 stones[row + difRow, col + difCol].type = 0;
                 row = row + difRow;
                 col = col + difCol;
-                //ShowBoard();
+                ShowBoard();
             }
         }
 
@@ -253,9 +253,10 @@ namespace MonsterPang_Console
                     temps[row, col] = stones[row, col];
                 }
             }
-            Stone temp = temps[row1, col1];
-            temps[row1, col1] = temps[row2, col2];
-            temps[row2, col2] = temp;
+            Stone temp = new Stone (row1, col1, random);
+            temp.type = temps[row1, col1].type;
+            temps[row1, col1].type = temps[row2, col2].type;
+            temps[row2, col2].type = temp.type;
 
             if (IsLinear(row1, col1, ref temps)) // ref로 한 이유는, 메모리를 아끼기 위해서... 아껴지나?
             {
