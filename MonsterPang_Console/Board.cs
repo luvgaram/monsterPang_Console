@@ -148,7 +148,7 @@ namespace MonsterPang_Console
                     }
                 }
             }
-            Console.WriteLine("Delete [{0},{1}]", maxRow, maxCol);
+            //Console.WriteLine("Delete [{0},{1}]", maxRow, maxCol);
             Delete(maxRow, maxCol, maxType);
             
             if (maxScore < 3)

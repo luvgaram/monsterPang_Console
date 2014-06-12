@@ -28,6 +28,7 @@ namespace MonsterPang_Console
 
                 if (board.IsMovable() == true) // IsMovabel() 다혜가 구현하기
                 {
+                    Console.WriteLine("입력받습니다. row col 순서대로 입력해주세요.");
                     int row1;
                     int col1;
                     int row2;
@@ -55,7 +56,7 @@ namespace MonsterPang_Console
         }
         public int ReadInteger()
         {
-            Console.Write("값을 입력하세요(row, col순서대로입력해주세요): ");
+            Console.Write("값을 입력하세요 : ");
             return int.Parse(Console.ReadLine());
         }
     }
