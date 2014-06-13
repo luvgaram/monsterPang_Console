@@ -71,14 +71,6 @@ namespace MonsterPang_Console
             return stones;
         }
 
-        public bool IsLinear(Stone stone)
-        {
-            if ((Score(stone.row, stone.col)[0] >= 2) || (Score(stone.row, stone.col)[1] >= 2))
-                return true;
-            else
-                return false;
-        }
-
         public int Check(ref int score, int row, int col, int difRow, int difCol)
         {
             if ((GetStonesData(row + difRow, col + difCol) != null) && (stones[row, col].type != stones[row + difRow, col + difCol].type))
@@ -219,7 +211,7 @@ namespace MonsterPang_Console
                 while (stones[row, col].type == 0)
                 {
                     if (GetStonesData(temp, col) == null)
-                        stones[row, col] = new Stone(row, col, random);
+                        stones[row, col].type = random.Next(1,7);
                     else if (stones[temp, col].type != 0)
                     {
                         stones[row, col].type = stones[temp, col].type;
@@ -250,7 +242,8 @@ namespace MonsterPang_Console
             {
                 for(int col = 0; col < boardSize; col++)
                 {
-                    temps[row, col] = stones[row, col];
+                    temps[row, col] = new Stone(row, col, random); 
+                    temps[row, col].type = stones[row, col].type;
                 }
             }
             Stone temp = new Stone (row1, col1, random);
@@ -280,23 +273,23 @@ namespace MonsterPang_Console
             {
                 return true;
             }
-            else if ((GetStonesData(row - 1, col) != null) && (GetStonesData(row + 1, col) != null) && AreSameType(row - 1, col, 1, ref temps))
+            if ((GetStonesData(row - 1, col) != null) && (GetStonesData(row + 1, col) != null) && AreSameType(row - 1, col, 1, ref temps))
             {
                 return true;
             }
-            else if ((GetStonesData(row + 2, col) != null) && AreSameType(row, col, 1, ref temps))
+            if ((GetStonesData(row + 2, col) != null) && AreSameType(row, col, 1, ref temps))
             {
                 return true;
             }
-            else if ((GetStonesData(row, col - 2) != null) && AreSameType(row, col - 2, 2, ref temps))
+            if ((GetStonesData(row, col - 2) != null) && AreSameType(row, col - 2, 2, ref temps))
             {
                 return true;
             }
-            else if ((GetStonesData(row, col - 1) != null) && (GetStonesData(row, col + 1) != null) && AreSameType(row, col - 1, 2, ref temps))
+            if ((GetStonesData(row, col - 1) != null) && (GetStonesData(row, col + 1) != null) && AreSameType(row, col - 1, 2, ref temps))
             {
                 return true;
             }
-            else if ((GetStonesData(row, col - 2) != null) && AreSameType(row, col, 2, ref temps))
+            if ((GetStonesData(row, col - 2) != null) && AreSameType(row, col, 2, ref temps))
             {
                 return true;
             }
@@ -329,14 +322,14 @@ namespace MonsterPang_Console
             {
                 if (direction == 1)
                 {
-                    if (temps[i, col].type == firstType)
+                    if ((GetStonesData(i, col) != null) && (temps[i, col].type == firstType))
                     {
                         count++;
                     }
                 }
                 else
                 {
-                    if (temps[row, i].type == firstType)
+                    if ((GetStonesData(row, i) != null) && (temps[row, i].type == firstType))
                     {
                         count++;
                     }
